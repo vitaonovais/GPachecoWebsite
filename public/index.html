@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Birthday Party Invite</title>
+    <style>
+    /* Base Styles */
+    body {
+        background: linear-gradient(135deg, #000057, #7A00A2, #FF0047); /* Trilinear gradient */
+        background-size: cover;
+        color: white;
+        font-family: Comic Sans MS, cursive, sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        text-align: center;
+        background: linear-gradient(90deg, #000057, #7A00A2); /* Trilinear for the header */
+        padding: 20px;
+        color: #fff;
+        font-size: 2.5em; /* Reduced font size for better mobile readability */
+        font-weight: bold;
+        text-shadow: 2px 2px 0px #000;
+    }
+
+    nav {
+        background: linear-gradient(90deg, #7A00A2, #FF0047); /* Gradient across the navigation */
+        padding: 15px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    nav a {
+        color: white;
+        text-decoration: none;
+        font-size: 1.2em;
+        margin: 0 10px;
+        padding: 10px;
+        background: linear-gradient(to bottom, #FF0047, #7A00A2);
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        cursor: pointer;
+    }
+
+    .container {
+        width: 90%; /* Adjust container width to fit smaller screens */
+        margin: auto;
+        padding: 15px;
+        background-color: rgba(0, 0, 0, 0.8);
+        background-image: url(background.jpg);
+        background-position: center; /* Center the background image */
+        background-repeat: repeat; /* Prevent the image from repeating */
+        background-size: 90%;
+        border: 2px solid #FF0047; /* Brighter border to match the trilinear theme */
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(255, 0, 71, 0.7);
+        text-align: center;
+    }
+
+    /* Flex container for images */
+    .profile-images {
+        display: flex;
+        justify-content: center; /* Center the images horizontally */
+        align-items: center; /* Vertically align the images in the center */
+        gap: 20px; /* Add some space between images */
+        margin-bottom: 20px;
+        flex-wrap: wrap; /* Wrap images on smaller screens */
+    }
+
+    .profile-box {
+        width: 100px; /* Smaller width for mobile */
+        border: 3px solid #ff00dd;
+        padding: 10px;
+        margin: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        text-align: center;
+    }
+
+    .profile-box img {
+        width: 100%;
+        border-radius: 5px; /* Rounded corners for the image */
+        border: 2px solid #555;
+    }
+
+    h2 {
+        color: #FF0047; /* Accent color for the headings */
+        font-size: 2em; /* Adjusted for mobile screens */
+    }
+
+    .blurb {
+        background-color: rgba(121, 0, 162, 0.651); /* Slightly muted magenta for blurbs */
+        padding: 20px;
+        color: #fff;
+        margin-bottom: 20px;
+        font-size: 1.2em;
+        text-align: left;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    footer {
+        background: linear-gradient(90deg, #000057, #7A00A2, #FF0047); /* Trilinear footer */
+        padding: 15px;
+        color: #fff;
+        font-size: 0.8em;
+        text-align: center;
+        margin-top: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    input, button {
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        margin-bottom: 10px;
+        background-color: #FF0047;
+        color: #fff;
+        width: 90%; /* Full width for input and button on smaller screens */
+    }
+
+    button {
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #7A00A2;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    .map {
+        color: white;
+    }
+    #clown-mirror {
+        transform:scaleX(-1);
+    }
+
+    /* Flex container for style and wishlist images */
+    .style-images, .wishlist-images {
+        display: flex;
+        justify-content: space-around; /* Space between images */
+        align-items: center;
+        flex-wrap: wrap; /* Wrap images on smaller screens */
+        margin-bottom: 20px;
+        gap: 20px;
+    }
+
+    /* Style box for images with borders */
+    .style-box, .wishlist-box {
+        width: 150px; /* Adjust width */
+        border: 3px solid #ff00dd;
+        padding: 10px;
+        margin: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+        text-align: center;
+    }
+    /* Enlarge image on hover */
+    .style-box img:hover, .wishlist-box img:hover {
+        transform: scale(1.5); /* Increases the size of the image */
+        z-index: 10; /* Makes sure the enlarged image appears above other content */
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7); /* Add a shadow around the image */
+    }
+
+    .style-box img, .wishlist-box img {
+        width: 100%;
+        border: 2px solid #555;
+    }
+
+    .compass-icon {
+        display: inline-flex;
+        width: 50px;
+    }
+    .top-gif {
+        display: flex;
+        justify-content: center; /* Center the GIFs horizontally */
+        align-items: center;     /* Align the GIFs vertically */
+        gap: 10px;               /* Add space between the GIFs */
+        margin-bottom: 20px;     /* Add space below the GIFs */
+    }
+    #playlist {
+        background-image: url(star.gif);
+        background-size: 40%;
+    }
+    .top-gif img {
+        width: 5%;            /* Adjust the size of the GIFs */
+        height: auto;
+        border-radius: 5px;      /* Optional: Add some rounded corners */
+    }
+    #bigger-gif {
+        width: 15%;             /* Make this specific GIF bigger */
+    }
+    #phone {
+        display: inline-flex;
+        width: 18px;
+    }
+    #arrow {
+        display: inline-flex;
+        transform: rotate(-90deg);
+        width: 18px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .top-gif img {
+            width: 100px;        /* Adjust the size of the GIFs for smaller screens */
+        }
+    }
+
+    /* Media Query for screens smaller than 768px (Tablets & Mobile) */
+    @media screen and (max-width: 768px) {
+        header {
+            font-size: 2em; /* Smaller font size for header */
+        }
+
+        h2 {
+            font-size: 1.5em; /* Smaller heading size */
+        }
+
+        nav a {
+            font-size: 1em; /* Smaller nav links */
+            padding: 8px; /* Adjusted padding */
+        }
+
+        .profile-images {
+            flex-direction: column; /* Stack images vertically on mobile */
+            align-items: center;
+        }
+
+        .profile-box {
+            width: 80px; /* Reduce image size for mobile */
+        }
+
+        input, button {
+            width: 100%; /* Full width on mobile */
+        }
+
+        .container {
+            width: 95%; /* Narrower container for mobile */
+        }
+    }
+
+    /* Media Query for screens smaller than 480px (Small Mobile) */
+    @media screen and (max-width: 480px) {
+        header {
+            font-size: 1.8em; /* Even smaller font size for header */
+        }
+
+        h2 {
+            font-size: 1.2em; /* Smaller heading size */
+        }
+
+        nav a {
+            font-size: 0.9em; /* Smaller nav links */
+        }
+
+        .profile-box {
+            width: 60px; /* Further reduce image size for small screens */
+        }
+
+        .blurb {
+            font-size: 1em; /* Adjust blurb text size */
+            padding: 10px; /* Reduce padding */
+        }
+
+        input, button {
+            font-size: 0.9em; /* Smaller text size for inputs and buttons */
+        }
+    }
+    @keyframes flash {
+        0% { color: red; }
+        25% { color: yellow; }
+        50% { color: green; }
+        75% { color: blue; }
+        100% { color: red; }
+    }
+
+    .flashing {
+        animation: flash 1s infinite;
+    }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Form submission handler
+            document.getElementById("confirm-form").addEventListener("submit", function (event) {
+                event.preventDefault();
+                
+                // Show confirmation message
+                const message = document.getElementById("confirmation-message");
+                message.textContent = "Presença Confirmada!!!";
+                message.style.display = "block";
+                
+                // Add flashing effect
+                message.classList.add("flashing");
+            });
+        });
+
+        // Function to switch between tabs
+        function showTab(tabName) {
+            var tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(function (tab) {
+                tab.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+        }
+    </script>
+</head>
+<body>
+
+    <header>
+        Pacheco's Birthday Party!
+    </header>
+
+    <nav>
+        <a onclick="showTab('home')">Home</a>
+        <a onclick="showTab('style')">Estilo</a>
+        <a onclick="showTab('playlist')">Playlist</a>
+        <a onclick="showTab('invite')">Wishlist</a>
+    </nav>
+
+    <div class="container">
+        <!-- Home Content -->
+        <div id="home" class="tab-content active">
+            <div class="profile-images">
+                <div class="profile-box">
+                    <img src="Home/welcome.gif" alt="Profile Pic">
+                </div>
+                <div class="profile-box">
+                    <img src="Home/home2.gif" alt="Profile Pic">
+                </div>
+                <div class="profile-box">
+                    <img src="Home/welcome 2.gif" alt="Profile Pic">
+                </div>
+            </div>
+
+            <h2>Pacheco's Party Invite</h2>
+
+            <section class="blurb">
+                <h3>Convite Especial</h3>
+                <p>Caros amigos, Temos o prazer de convidá-los para uma ocasião muito especial!
+                 No dia 21 de setembro de 2024, a partir das 19h, estaremos reunidos para celebrar momentos inesquecíveis. 
+                 O local será a Chácara da Família, onde haverá música, boa comida e muita diversão! 
+                 Contamos com a presença de todos para tornar essa noite ainda mais memorável. Por favor, confirmem sua presença no final da página até o dia 20 de setembro <img id="arrow" src="Home/Arrow_L.gif">,
+                 Entrem em contato pelo telefone: <a class="map" href="https://wa.me/19788968947" target="_blank">(978) 896-8947<img id="phone" src="Home/phone.gif"></a> Esperamos vocês com muita alegria! Com carinho, Gabriel.
+                </p>
+            </section>
+
+            <section class="blurb">
+                <h3>Quando & Onde</h3>
+                <p>Data: 21 de Setembro, <br>
+                    2024 Local: Bar do Português 
+                    <a class="map" href="https://www.google.com/maps?q=512+Central+St,+Lowell,+MA+01852" target="_blank">
+                        512 Central St, Lowell, MA 01852
+                    </a>
+                    <img src="Home/MapHeadings.gif" alt="Compass" class="compass-icon">
+                 </p>
+            </section>
+
+            <section class="blurb">
+                <form id="confirm-form" action="/submit" method="POST">
+                    <p>Nome:</p>
+                    <input type="text" name="name" placeholder="Seu Nome" required><br><br>
+                    <button type="submit">Confirmar!</button>
+                </form>
+                
+                <p id="confirmation-message" style="display:none; font-size: 1.5em; font-weight: bold;"></p>
+                
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        document.getElementById("confirm-form").addEventListener("submit", function (event) {
+                            event.preventDefault(); // Prevent form from doing a page reload
+
+                            const form = event.target;
+                            const formData = new FormData(form);
+                            const name = formData.get('name');
+
+                            // Send the data as JSON instead of FormData for simplicity
+                            fetch('/submit', {
+                                method: 'POST',
+                                headers: {
+                                    'Content-Type': 'application/json', // Set Content-Type to JSON
+                                },
+                                body: JSON.stringify({ name: name }), // Send name in JSON format
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                const message = document.getElementById("confirmation-message");
+                                message.textContent = data.message; // Server response message
+                                message.style.display = "block";
+                                message.classList.add("flashing");
+
+                                form.reset();
+                            })
+                            .catch(error => {
+                                console.error('Error:', error);
+                            });
+                        });
+                    });
+
+                </script>                
+            </section>
+        </div>
+
+        <!-- Estilo Content -->
+        <div id="style" class="tab-content">
+            <div class="top-gif">
+                <img src="Estilo Gifs/gap.gif" alt="bag">
+                <img id="bigger-gif" src="Estilo Gifs/clothessnoba1.gif" alt="Top GIF">
+                <img src="Estilo Gifs/gap.gif" alt="bag">
+            </div>
+
+            <section class="blurb">
+                <h3>Party Style</h3>
+                <p>Check out these outfit inspirations for the party:</p>
+                <div class="style-images">
+                    <div class="style-box"><img src="estilo vestimentas/1.jpeg" alt="Style 1"></div>
+                    <div class="style-box"><img src="estilo vestimentas/2.jpeg" alt="Style 2"></div>
+                    <div class="style-box"><img src="estilo vestimentas/3.jpeg" alt="Style 3"></div>
+                    <div class="style-box"><img src="estilo vestimentas/4.jpeg" alt="Style 4"></div>
+                    <div class="style-box"><img src="estilo vestimentas/5.jpeg" alt="Style 5"></div>
+                    <div class="style-box"><img src="estilo vestimentas/6.jpeg" alt="Style 6"></div>
+                    <div class="style-box"><img src="estilo vestimentas/7.jpeg" alt="Style 7"></div>
+                    <div class="style-box"><img src="estilo vestimentas/8.jpeg" alt="Style 8"></div>
+                    <div class="style-box"><img src="estilo vestimentas/9.jpeg" alt="Style 9"></div>
+                    <div class="style-box"><img src="estilo vestimentas/10.jpeg" alt="Style 10"></div>
+                    <div class="style-box"><img src="estilo vestimentas/11.jpeg" alt="Style 11"></div>
+                    <div class="style-box"><img src="estilo vestimentas/12.jpeg" alt="Style 12"></div>
+                    <div class="style-box"><img src="estilo vestimentas/13.jpeg" alt="Style 13"></div>
+                    <div class="style-box"><img src="estilo vestimentas/14.jpeg" alt="Style 14"></div>
+                    <div class="style-box"><img src="estilo vestimentas/15.jpeg" alt="Style 15"></div>
+                    <div class="style-box"><img src="estilo vestimentas/16.jpeg" alt="Style 16"></div>
+                    <div class="style-box"><img src="estilo vestimentas/17.jpeg" alt="Style 17"></div>
+                    <div class="style-box"><img src="estilo vestimentas/18.jpeg" alt="Style 18"></div>
+                    <div class="style-box"><img src="estilo vestimentas/19.jpeg" alt="Style 19"></div>
+                    <div class="style-box"><img src="estilo vestimentas/20.jpeg" alt="Style 20"></div>
+                    <div class="style-box"><img src="estilo vestimentas/21.jpeg" alt="Style 21"></div>
+                    <div class="style-box"><img src="estilo vestimentas/22.jpeg" alt="Style 22"></div>
+                    <div class="style-box"><img src="estilo vestimentas/23.jpeg" alt="Style 23"></div>
+                    <div class="style-box"><img src="estilo vestimentas/24.jpeg" alt="Style 24"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Playlist Content -->
+        <div id="playlist" class="tab-content">
+            <div class="top-gif-music">
+                <img src="Music Gifs/slug1.gif" alt="bag">
+                <img id="bigger-gif" src="Music Gifs/Disco.gif" alt="Top GIF">
+                <img src="Music Gifs/slug2.gif" alt="bag">
+            </div>
+            <section class="music-player">
+                <h3>Party Playlist</h3>
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4UX1aUFUXFZq6SouC3j40X?utm_source=generator&theme=0" 
+                width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy"></iframe>
+            </section>
+            <section class="music-player">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/7iKHdSfNjqzJCH6GM9rpwm?utm_source=generator" 
+                width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy"></iframe>
+            </section>
+            <section class="music-player">
+                <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2h9UT9SQZoC58sQ5KvTFdX?utm_source=generator" 
+                width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy"></iframe>
+            </section>
+        </div>
+
+        <!-- Invite Content -->
+        <div id="invite" class="tab-content">
+            <div class="top-gif-music">
+                <img src="Presentes Gif/clown_balloons.gif" alt="bag">
+                <img id="bigger-gif" src="Presentes Gif/red_and_wh_gift.gif" alt="Top GIF">
+                <img id="clown-mirror" src="Presentes Gif/clown_balloons.gif" alt="bag">
+            </div>
+            <div class="blurb">
+                <h3>Wishlist</h3>
+                <p>Algumas dicas de presentes!!!</p>
+                <div class="wishlist-images">
+                    <div class="wishlist-box"><img src="wishlist/1.jpeg" alt="Wishlist Item 1"></div>
+                    <div class="wishlist-box"><img src="wishlist/2.jpeg" alt="Wishlist Item 2"></div>
+                    <div class="wishlist-box"><img src="wishlist/3.jpeg" alt="Wishlist Item 3"></div>
+                    <div class="wishlist-box"><img src="wishlist/4.jpeg" alt="Wishlist Item 4"></div>
+                    <div class="wishlist-box"><img src="wishlist/5.jpeg" alt="Wishlist Item 5"></div>
+                    <div class="wishlist-box"><img src="wishlist/6.jpeg" alt="Wishlist Item 6"></div>
+                    <div class="wishlist-box"><img src="wishlist/7.jpeg" alt="Wishlist Item 7"></div>
+                    <div class="wishlist-box"><img src="wishlist/8.jpeg" alt="Wishlist Item 8"></div>
+                    <div class="wishlist-box"><img src="wishlist/9.jpeg" alt="Wishlist Item 9"></div>
+                    <div class="wishlist-box"><img src="wishlist/10.jpeg" alt="Wishlist Item 10"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        &copy; 2024 Pacheco's Birthday Party
+    </footer>
+
+</body>
+</html>
