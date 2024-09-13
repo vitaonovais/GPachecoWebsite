@@ -10,7 +10,7 @@
         background: linear-gradient(135deg, #000057, #7A00A2, #FF0047); /* Trilinear gradient */
         background-size: cover;
         color: white;
-        font-family: Comic Sans MS, cursive, sans-serif;
+        font-family: Comic Sans MS, sans-serif;
         margin: 0;
         padding: 0;
     }
@@ -199,7 +199,7 @@
     }
     #phone {
         display: inline-flex;
-        width: 18px;
+        width: 22px;
     }
     #arrow {
         display: inline-flex;
@@ -347,8 +347,7 @@
                 <p>Caros amigos, Temos o prazer de convidá-los para uma ocasião muito especial!
                  No dia 21 de setembro de 2024, a partir das 19h, estaremos reunidos para celebrar momentos inesquecíveis. 
                  O local será a Chácara da Família, onde haverá música, boa comida e muita diversão! 
-                 Contamos com a presença de todos para tornar essa noite ainda mais memorável. Por favor, confirmem sua presença no final da página até o dia 20 de setembro <img id="arrow" src="Home/Arrow_L.gif">,
-                 Entrem em contato pelo telefone: <a class="map" href="https://wa.me/19788968947" target="_blank">(978) 896-8947<img id="phone" src="Home/phone.gif"></a> Esperamos vocês com muita alegria! Com carinho, Gabriel.
+                 Contamos com a presença de todos para tornar essa noite ainda mais memorável. Por favor, confirmem sua presença no final da página até o dia 20 de setembro <img id="arrow" src="Home/Arrow_L.gif">. <br>Esperamos vocês com muita alegria! Com carinho, Gabriel.
                 </p>
             </section>
 
@@ -365,46 +364,9 @@
 
             <section class="blurb">
                 <form id="confirm-form" action="/submit" method="POST">
-                    <p>Nome:</p>
-                    <input type="text" name="name" placeholder="Seu Nome" required><br><br>
-                    <button type="submit">Confirmar!</button>
-                </form>
-                
-                <p id="confirmation-message" style="display:none; font-size: 1.5em; font-weight: bold;"></p>
-                
-                <script>
-                    document.addEventListener('DOMContentLoaded', function () {
-                        document.getElementById("confirm-form").addEventListener("submit", function (event) {
-                            event.preventDefault(); // Prevent form from doing a page reload
-
-                            const form = event.target;
-                            const formData = new FormData(form);
-                            const name = formData.get('name');
-
-                            // Send the data as JSON instead of FormData for simplicity
-                            fetch('/submit', {
-                                method: 'POST',
-                                headers: {
-                                    'Content-Type': 'application/json', // Set Content-Type to JSON
-                                },
-                                body: JSON.stringify({ name: name }), // Send name in JSON format
-                            })
-                            .then(response => response.json())
-                            .then(data => {
-                                const message = document.getElementById("confirmation-message");
-                                message.textContent = data.message; // Server response message
-                                message.style.display = "block";
-                                message.classList.add("flashing");
-
-                                form.reset();
-                            })
-                            .catch(error => {
-                                console.error('Error:', error);
-                            });
-                        });
-                    });
-
-                </script>                
+                    <h3>Confirme sua presença pelo WhatsApp:</h3>
+                    <h1><a class="flashing" href="https://wa.me/19788968947" target="_blank">(978) 896-8947<img id="phone" src="Home/phone.gif"></a></h1>
+                </form>             
             </section>
         </div>
 
@@ -506,3 +468,4 @@
 
 </body>
 </html>
+
